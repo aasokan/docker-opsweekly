@@ -1,0 +1,12 @@
+# Override Environment Variables Apache
+source /etc/apache2/envvars
+
+# for supporting multiple apache2 instances
+if [ "${APACHE_CONFDIR##/etc/apache2-}" != "${APACHE_CONFDIR}" ] ; then
+    SUFFIX="-${APACHE_CONFDIR##/etc/apache2-}"
+else
+    SUFFIX=
+fi
+
+export APACHE_LOG_DIR=/home/apache/log/apache2$SUFFIX
+mkdir -p $APACHE_LOG_DIR
