@@ -14,6 +14,6 @@ docker-run-debug:
 
 docker-clean:
 	# Delete all containers
-	docker rm $(docker ps -a -q)
+	docker rm `docker ps -a -q` > /dev/null 2>&1 || echo "No active docker runs to delete"
 	# Delete all images
-	docker rmi $(docker images -q)
+	docker rmi `docker images -q` > /dev/null 2>&1 || echo "No docker images to delete"
