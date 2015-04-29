@@ -18,7 +18,6 @@ $email_from_domain = "mycompany.com";
  * that will return a plain text username string to Nagdash, e.g. "ldenness" or "bsmith"
  *
  * Below are two examples to get you started.
- **/
 
 function getUsername() {
     // Make sure this is relevant to your environment.
@@ -30,6 +29,9 @@ function getUsername() {
     // Use the PHP_AUTH_USER header which contains the username when Basic auth is used.
     return $_SERVER['PHP_AUTH_USER'];
 }
+
+ **/
+
 
 
 /**

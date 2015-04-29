@@ -10,8 +10,8 @@ ENV SRC_DIR $HOME_DIR/$SITE_DIR
 
 # Install
 RUN sudo apt-get update
-RUN sudo apt-get -y install php5-common libapache2-mod-php5 php5-cli
-RUN sudo apt-get -y install php5-mysql php5-curl mysql-server mysql-client git
+RUN sudo apt-get -y install apache2 php5-common libapache2-mod-php5 php5-cli
+RUN sudo apt-get -y install mysql-server mysql-client php5-mysql php5-curl git
 
 # Add config files
 ADD opsweekly.sh $HOME_DIR
