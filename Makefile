@@ -10,7 +10,7 @@ docker-run:
 	docker run -p $(BIND_PORT):80 -d $(IMAGE_NAME)
 
 docker-run-debug:
-	docker run -p $(BIND_PORT):80 -i -t $(IMAGE_NAME) /bin/bash
+	docker run -p $(BIND_PORT):80 -i -t --entrypoint=/bin/bash $(IMAGE_NAME)
 
 docker-clean:
 	# Delete all containers
