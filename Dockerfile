@@ -21,6 +21,8 @@ ADD config/* $HOME_DIR
 # Clone the opsweekly repo
 RUN mkdir -p $SRC_DIR && \
     git clone https://github.com/aasokan/opsweekly.git $SRC_DIR && \
+    cp $HOME_DIR/config.php $SRC_DIR/phplib/ && \
+    echo "php_value max_input_vars 10000" > $SRC_DIR/.htaccess && \
     ln -s $SRC_DIR /var/www/
 
 # Apache config
@@ -29,6 +31,7 @@ RUN sudo cp $HOME_DIR/servername.conf /etc/apache2/conf-available/ && \
     sudo a2enconf servername
 RUN sudo cp $HOME_DIR/000-default.conf /etc/apache2/sites-available/ && \
     sudo a2ensite 000-default
+RUN sudo a2enmod php5
 
 # Expose ports
 EXPOSE 80
