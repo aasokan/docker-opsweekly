@@ -1,17 +1,20 @@
 # Base image - ubuntu trusty
 FROM ubuntu:latest
 
-MAINTAINER Archana Asokan "aasokan@yelp.com"
+MAINTAINER Archana Asokan "archana.asokan.29@gmail.com"
 
 # Setup environment variables
 ENV SITE_DIR opsweekly
 ENV HOME_DIR /home/
 ENV SRC_DIR $HOME_DIR/$SITE_DIR
 
+# Enable this to allow package restart
+# RUN sudo sed -i -r 's/101/0/' /usr/sbin/policy-rc.d
+
 # Install
 RUN sudo apt-get update
-RUN sudo apt-get -y install apache2 php5-common libapache2-mod-php5 php5-cli
-RUN sudo apt-get -y install mysql-server mysql-client php5-mysql php5-curl git
+RUN sudo apt-get -y install vim apache2 php5-common libapache2-mod-php5 php5-cli
+RUN sudo apt-get -y install mysql-server mysql-client php5-mysql php5-curl sendmail git
 
 # Add config files
 ADD opsweekly.sh $HOME_DIR

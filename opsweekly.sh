@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Start mysql server
-/etc/init.d/mysql start
+/etc/init.d/mysql restart
 
 # Initialize default tables from $SITE_DIR/opsweekly.sql
 mysql -e "create database opsweekly;"
@@ -12,4 +12,4 @@ mysql -u $MYSQL_USER_NAME --password=$MYSQL_PASSWORD opsweekly < /home/opsweekly
 source /home/envvars && /usr/sbin/apache2 -t || { echo "Error in Apache configuration."; exit 1; }
 
 # Start the Apache server at end
-#source /home/envvars && /usr/sbin/apache2 -DFOREGROUND
+source /home/envvars && /usr/sbin/apache2 -DFOREGROUND &
